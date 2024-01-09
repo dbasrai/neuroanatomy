@@ -13,8 +13,8 @@ except ModuleNotFoundError:
     import tomli as tomllib
 
 # Put your question file name here
-QFILENAME = "ALLMCQ.txt"
-#QFILENAME = "ALLPRACTICEMCQ.txt"
+#QFILENAME = "ALLMCQ.txt"
+QFILENAME = "ALLPRACTICEMCQ.txt"
 QUESTIONS_PATH = pathlib.Path(__file__).parent / QFILENAME
 # Put the number of questions for a quiz here
 NUM_QUESTIONS_PER_QUIZ = 8
