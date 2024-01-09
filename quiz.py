@@ -4,8 +4,6 @@
 import pathlib
 import random
 from string import ascii_lowercase
-import sys
-import atexit # For the @atexit.register decorator. Does nothing unless you use 'exit'
 
 try:
     import tomllib
@@ -13,22 +11,16 @@ except ModuleNotFoundError:
     import tomli as tomllib
 
 # Put your question file name here
-#QFILENAME = "ALLMCQ.txt"
-QFILENAME = "ALLPRACTICEMCQ.txt"
+QFILENAME = "ALLPRACTICEMCQ.toml"
 QUESTIONS_PATH = pathlib.Path(__file__).parent / QFILENAME
 # Put the number of questions for a quiz here
-NUM_QUESTIONS_PER_QUIZ = 8
+NUM_QUESTIONS_PER_QUIZ = 30
 # Put the ID for your right answers here
 CORRECTANSWERS = "rightanswer"
 # Put the ID for your wrong answers here
 WRONGANSWERS = "wronganswer"
 # Put your introductory statement here
 INTRODUCTION = "Which lecture do you want to be quizzed about?"
-
-@atexit.register
-def goodbye(): # For a message when exiting the program
-    print("Bye bye!")
-
 
 def run_quiz():
     questions = prepare_questions(
@@ -41,7 +33,7 @@ def run_quiz():
         num_correct += ask_question(question)
 
     print(f"\nYou got {num_correct} correct out of {NUM_QUESTIONS_PER_QUIZ} questions")
-    sys.exit()
+
 
 def prepare_questions(path, num_questions):
     topic_info = tomllib.loads(path.read_text())
